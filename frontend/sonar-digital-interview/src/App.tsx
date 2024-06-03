@@ -1,4 +1,3 @@
-import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import JokesPage from './routes/JokesPage';
 import FormPage from './routes/FormPage';

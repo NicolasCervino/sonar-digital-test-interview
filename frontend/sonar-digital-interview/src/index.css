@@ -14,3 +14,11 @@ body {
   height: 100vh;
   display: flex;
 }
+
+#root {
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
