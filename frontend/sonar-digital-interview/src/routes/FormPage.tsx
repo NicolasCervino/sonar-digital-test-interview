@@ -1,7 +1,8 @@
-import { Box, Button, TextField } from "@mui/material";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { Box, Button } from "@mui/material";
+import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import FormField from "../components/FormField";
 
 type FormInputs = {
     name: string
@@ -22,69 +23,50 @@ const schema = z.object({
 });
 
 function FormPage() {
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm<FormInputs>({
+    const methods = useForm<FormInputs>({
         resolver: zodResolver(schema),
     });
+
     const onSubmit: SubmitHandler<FormInputs> = (data) => console.log(data);
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <Box my={2}>
-                <TextField
+        <FormProvider {...methods}>
+            <form onSubmit={methods.handleSubmit(onSubmit)}>
+                <FormField
+                    name="name"
                     label="Name"
-                    {...register('name', { required: "Name is required" })}
-                    fullWidth
-                    margin="normal"
-                    error={!!errors.name}
-                    helperText={errors.name ? errors.name.message : ''}
+                    inputMode="text"
+                    validation={{ required: "Name is required" }}
                 />
-            </Box>
 
-            <Box my={2}>
-                <TextField
+                <FormField
+                    name="surname"
                     label="Surname"
-                    {...register('surname', { required: "Surname is required" })}
-                    fullWidth
-                    margin="normal"
-                    error={!!errors.surname}
-                    helperText={errors.surname ? errors.surname.message : ''}
+                    inputMode="text"
+                    validation={{ required: "Surname is required" }}
                 />
-            </Box>
 
-            <Box my={2}>
-                <TextField
+                <FormField
+                    name="email"
                     label="Email"
-                    {...register('email', { required: "Email is required" })}
-                    fullWidth
-                    margin="normal"
-                    error={!!errors.email}
-                    helperText={errors.email ? errors.email.message : ''}
+                    inputMode="email"
+                    validation={{ required: "Email is required" }}
                 />
-            </Box>
 
-            <Box my={2}>
-                <TextField
+                <FormField
+                    name="phoneNumber"
                     label="Phone Number"
-                    type="number"
                     inputMode="tel"
-                    {...register('phoneNumber', { required: "Phone Number is required" })}
-                    fullWidth
-                    margin="normal"
-                    error={!!errors.phoneNumber}
-                    helperText={errors.phoneNumber ? errors.phoneNumber.message : ''}
+                    validation={{ required: "Phone Number is required" }}
                 />
-            </Box>
 
-            <Box my={2}>
-                <Button type="submit" variant="contained" color="primary" fullWidth>
-                    Submit
-                </Button>
-            </Box>
-        </form>
+                <Box my={2}>
+                    <Button type="submit" variant="contained" color="primary" fullWidth>
+                        Submit
+                    </Button>
+                </Box>
+            </form>
+        </FormProvider>
     );
 }
 
