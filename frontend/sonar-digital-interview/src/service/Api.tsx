@@ -7,7 +7,7 @@ export const getRandomJoke = async () => {
             return response.data;
         })
         .catch((error) => {
-            console.log(error)
-            return { value: error.message }
+            console.log(error);
+            return { value: error.message };
         });
 };

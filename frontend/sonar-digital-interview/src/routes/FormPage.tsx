@@ -1,5 +1,5 @@
-import { Box, Button, TextField } from "@mui/material"
-import { useForm, SubmitHandler } from "react-hook-form"
+import { Box, Button, TextField } from "@mui/material";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 
@@ -8,7 +8,7 @@ type FormInputs = {
     surname: string
     email: string
     phoneNumber: number
-}
+};
 
 const schema = z.object({
     name: z.string().min(1, { message: "Name is required" }),
@@ -28,8 +28,8 @@ function FormPage() {
         formState: { errors },
     } = useForm<FormInputs>({
         resolver: zodResolver(schema),
-    })
-    const onSubmit: SubmitHandler<FormInputs> = (data) => console.log(data)
+    });
+    const onSubmit: SubmitHandler<FormInputs> = (data) => console.log(data);
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -85,7 +85,7 @@ function FormPage() {
                 </Button>
             </Box>
         </form>
-    )
+    );
 }
 
-export default FormPage
+export default FormPage;

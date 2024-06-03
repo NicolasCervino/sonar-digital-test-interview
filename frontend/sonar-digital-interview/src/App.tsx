@@ -1,9 +1,9 @@
-import './App.css'
-import { Route, Routes } from 'react-router-dom'
-import JokesPage from './routes/JokesPage'
-import FormPage from './routes/FormPage'
-import Navbar from './components/Navbar'
-import { Container } from '@mui/material'
+import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import JokesPage from './routes/JokesPage';
+import FormPage from './routes/FormPage';
+import Navbar from './components/Navbar';
+import { Container } from '@mui/material';
 
 function App() {
 
@@ -17,7 +17,7 @@ function App() {
         </Routes>
       </Container >
     </>
-  )
+  );
 }
 
-export default App
+export default App;

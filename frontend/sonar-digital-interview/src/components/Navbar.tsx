@@ -1,5 +1,5 @@
-import { AppBar, Button, Toolbar, } from "@mui/material"
-import { Link } from "react-router-dom"
+import { AppBar, Button, Toolbar, } from "@mui/material";
+import { Link } from "react-router-dom";
 
 function Navbar() {
     return (
@@ -9,7 +9,7 @@ function Navbar() {
                 <Button component={Link} to="/form" color="inherit">Form</Button>
             </Toolbar>
         </AppBar>
-    )
+    );
 }
 
-export default Navbar
+export default Navbar;
